@@ -1,0 +1,63 @@
+h2 {
+    color: green;
+    background-color: black;
+
+    color: brown;
+}
+
+#heading {
+    color: deepskyblue;
+    background-color: blueviolet;
+    text-transform: uppercase;
+}
+
+.para {
+    font-style: italic;
+    color: #a5292a;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.text-red {
+    color: red;
+}
+
+.text-center {
+    align-items: center;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-big {
+    font-size: 32px;
+}
+
+.text-big.text-red {
+    color: blue;
+}
+
+h2.text-big.text-red {
+    color: yellow;
+}
+
+.box p {
+    color: darkgoldenrod;
+}
+
+.text-red, .text-big {
+    background-color: antiquewhite;
+}
+.box span {
+
+}
+
+p > span {
+
+}
+
+.box p > span {
+    
+}
