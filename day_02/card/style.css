@@ -36,3 +36,8 @@ img {
 .content p span {
     color: #ffd600;
 }
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}
