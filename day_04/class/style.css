@@ -1,0 +1,89 @@
+/* Clear một số thuộc tính css mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto";
+    color: #464646;
+}
+
+/* Clear một số thuộc tính css mặc định trong thẻ */
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+button {
+    border: none;
+}
+
+/* Card */
+.card {
+    width: 400px;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 15%);
+    background-color: #fff;
+
+    margin: auto;
+    margin-top: 100px;
+}
+
+.year {
+    background-color: #ef5321;
+}
+
+.year p {
+    color: #fff;
+    font-weight: 300;
+    text-align: center;
+    padding: 6px;
+}
+
+.date {
+    background-color: #fd6d3f;
+    padding: 32px;
+}
+
+.date h2 {
+    font-weight: 300;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+}
+
+.date p {
+    color: #fff;
+    font-weight: 300;
+    text-align: center;
+}
+
+.info {
+    padding: 20px;
+}
+
+.info h2 {
+    font-size: 21px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.info p {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+.info p:nth-child(4) {
+    border-bottom: 1px solid #c4c4c4e3;
+    padding-bottom: 14px;
+}
+
+.info a {
+    color: #3c78e8;
+    font-weight: 300;
+}

@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-text : #3e2098;
+    --color-heading : #80264e;
+    --width : 100px;
+    --height : 100px;
+}
+
+.text {
+    --color-text : #26803e;
+    font-size: 2rem;
+    color: var(--color-text);
+}
+
+.box {
+    font-size: 10px;
+}
+
+.box p {
+    font-size: 1.5em;
+    color: var(--color-text);
+}
+
+.box h2 {
+    font-size: 4em;
+    color: var(--color-heading);
+}
+
+.parent {
+    width: calc(8 * var(--width));
+    height: calc(4 * var(--height));
+    background-color: darkcyan;
+}
+
+.child {
+    width: 80%;
+    height: 100%;
+    background-color: darkorange;
+}
+
+.shape {
+    width: 400px;
+    height: 300px;
+    background-color: cornflowerblue;
+
+    padding : 20px;
+    border: 10px solid #000;
+}
