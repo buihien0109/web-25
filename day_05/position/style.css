@@ -1,0 +1,54 @@
+body {
+    height: 2000px;
+}
+
+.box {
+    width: 200px;
+    height: 100px;
+    background-color: blue;
+
+    position: relative;
+    top: 50px;
+    left: 100px;
+
+    z-index: 2;
+}
+
+.parent {
+    width: 1000px;
+    height: 500px;
+    background-color: cornflowerblue;
+
+    position: relative;
+}
+
+.child {
+    width: 300px;
+    height: 100px;
+    background-color: darkorange;
+
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+
+.btn-top {
+    padding: 15px 30px;
+    border: none;
+    background-color: tomato;
+    color: #fff;
+    border-radius: 5px;
+
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+}
+
+.sticky {
+    height: 100px;
+    background-color:darkslateblue;
+
+    position: sticky;
+    top: 50px;
+    left: 0;
+}
