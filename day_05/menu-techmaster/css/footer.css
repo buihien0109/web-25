@@ -1,0 +1,36 @@
+/* Footer style */
+.footer {
+    background-color: #464646;
+    padding: 48px;
+}
+
+.footer ul li, .footer ul li a{
+    color: #919294;
+}
+
+.footer-item {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.footer li {
+    font-size: 14px;
+    line-height: 35px;
+    color: #919294;
+}
+
+.footer-item h4 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer a i {
+    display: inline-block;
+    font-size: 32px;
+    margin-right: 32px;
+}

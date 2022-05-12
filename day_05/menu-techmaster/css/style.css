@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
+@import url("./base.css");
+@import url("./header.css");
+@import url("./footer.css");
+
+
+.container {
+    max-width: 1250px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Card component */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.course {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.card-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 15px;  
+}
+
+.card {
+    box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
+    border-radius: 7px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.card-image {
+    height: 260px;
+}
+
+.card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 16px 24px;
+}
+
+.card-content .title {
+    height: 56px;
+    display: flex;
+    align-items: center;
+}
+
+.card-content h2 {
+    color: #464646;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+
+.description, .rating {
+    color: #757575;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.rating i {
+    color: #ffd600;
+}
+
+.price {
+    color: #f65623;
+    font-size: 19px;
+}
+
