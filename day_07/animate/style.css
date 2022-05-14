@@ -1,0 +1,5 @@
+h1.animate__animated {
+    animation-name: fadeInLeft;
+    animation-duration: 3s;
+    animation-delay: 1s;
+}
