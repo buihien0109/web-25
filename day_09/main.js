@@ -35,8 +35,8 @@ let message = 'Xin chào các bạn, mình tên là "Bùi Hiên". Mình sinh nă
 console.log(message);
 
 let message1 = "Xin chào các bạn, " +
-"mình tên là \"Bùi Hiên\". " +
-"Mình sinh năm 1997";
+    "mình tên là \"Bùi Hiên\". " +
+    "Mình sinh năm 1997";
 console.log(message1);
 
 // Cộng chuỗi
@@ -62,3 +62,5 @@ console.log(`
 
 // Math Object
 console.log(Math.PI);
+
+
