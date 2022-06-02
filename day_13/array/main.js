@@ -91,7 +91,6 @@ function checkArrAsc(arr) {
     }
     return true
 }   
-
 console.log(checkArrAsc([1,4,3,5,6]));
 console.log(checkArrAsc([1,3,4,5,6]));
 
