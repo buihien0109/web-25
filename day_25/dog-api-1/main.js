@@ -104,3 +104,14 @@ btnFetch.addEventListener("click", async () => {
         console.log(error);
     }
 })
+
+const test = async () => {
+    try {
+        let res = await axios.get("http://localhost:8080");
+        console.log(res.data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+test();

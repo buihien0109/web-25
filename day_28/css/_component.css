@@ -1,0 +1,44 @@
+/* service style */
+.service-container {
+    padding: 86px 0 132px;
+    border-top: 1px solid #e2e2e2;
+}
+
+.service-item p:nth-child(2) {
+    margin: 20px 0 14px;
+    font-size: 18px;
+    color: #414141;
+}
+
+.service-item p:nth-child(3) {
+    color: #6c6c6c;
+    line-height: 28px;
+}
+
+/* get-started */
+#get-started {
+    background: linear-gradient(90deg, #fe985b 2.77%, #fe4fa7 100%);
+    padding: 120px 0;
+}
+
+#get-started h2 {
+    font-weight: 700;
+    font-size: 55px;
+    line-height: 60px;
+}
+
+#get-started p {
+    font-size: 20px;
+    line-height: 30px;
+    margin: 28px auto;
+    width: 550px;
+}
+
+#get-started button {
+    font-size: 18px;
+    color: #464646;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 15px 50px;
+    border: none;
+}
