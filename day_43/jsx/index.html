@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="root"></div>
+
+        <script
+            crossorigin
+            src="https://unpkg.com/react@18/umd/react.development.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+        ></script>
+
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+            // 1. Component Greeting
+            const Greeting = ({ name, status }) => {
+                if (status) {
+                    return (
+                        <div className="greeting" style={{ color: "red" }}>
+                            <h1>Hello {name}</h1>
+                            <p>Bạn có khỏe không?</p>
+                        </div>
+                    );
+                }
+                return <h1>Good Bye {name}</h1>;
+            };
+
+            // Hiển thị danh sách tên
+            const names = ["Bùi Hiên", "Thu Hằng", "Minh Duy"];
+            const namesOther = ["Nguyễn Văn A", "Trần Văn B", "Ngô Thị C"];
+
+            // 2. Component ListName
+            const ListName = ({ names }) => {
+                return (
+                    <ul className="name">
+                        {names.map((name, index) => (
+                            <li key={index}>{name}</li>
+                        ))}
+                    </ul>
+                );
+            };
+
+            // 3. Component ListMenu
+            const menus = [
+                { path: "/", label: "Trang chủ" },
+                { path: "/shop", label: "Cửa hàng" },
+                { path: "/about", label: "Về chúng tôi" },
+                { path: "/contact", label: "Liên hệ" },
+            ];
+
+            const ListMenu = ({ menus }) => {
+                return (
+                    <div className="menu-list">
+                        {menus.map((menu, index) => (
+                            <a
+                                key={index}
+                                href={menu.path}
+                                className="menu-item"
+                            >
+                                {menu.label}
+                            </a>
+                        ))}
+                    </div>
+                );
+            };
+
+            const App = () => {
+                return (
+                    <React.Fragment>
+                        <Greeting name={"Bùi Hiên"} status={true} />
+                        <Greeting name={"Nguyễn Văn A"} status={false} />
+                        <Greeting name={"Trần Văn B"} status={false} />
+                        <Greeting name={"Ngô Thị C"} status={true} />
+
+                        <ListName names={names} />
+                        <ListName names={namesOther} />
+                        <ListName names={[...names, ...namesOther]} />
+
+                        <ListMenu menus={menus} />
+                    </React.Fragment>
+                );
+            };
+
+            // Tạo Root dom để render dữ liệu
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+
+            // Render dữ liệu
+            root.render(<App />);
+        </script>
+    </body>
+</html>
