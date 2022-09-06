@@ -3,16 +3,16 @@ const App = () => {
         <React.Fragment>
             <Header />
 
-            <div class="course-container mt-5 mb-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
+            <div className="course-container mt-5 mb-5">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-3">
                             <CourseFilter />
                         </div>
 
-                        <div class="col-md-9">
-                            <div class="row">
-                                <div class="col-md-4">
+                        <div className="col-md-9">
+                            <div className="row">
+                                <div className="col-md-4">
                                     <CourseSearch />
                                 </div>
                             </div>
@@ -112,19 +112,19 @@ const CourseFilter = () => {
             <h2 className="fs-5 mb-4">Chủ đề</h2>
             <div className="topic-item input-group d-flex align-items-center mb-1">
                 <input type="radio" value="Backend" id="backend" name="topic" />
-                <label for="backend" className="ms-2 fs-5">Lập trình Backend</label>
+                <label htmlFor="backend" className="ms-2 fs-5">Lập trình Backend</label>
             </div>
             <div className="topic-item input-group d-flex align-items-center mb-1">
                 <input type="radio" value="Frontend" id="frontend" name="topic" />
-                <label for="frontend" className="ms-2 fs-5">Lập trình Frontend</label>
+                <label htmlFor="frontend" className="ms-2 fs-5">Lập trình Frontend</label>
             </div>
             <div className="topic-item input-group d-flex align-items-center mb-1">
                 <input type="radio" value="Di động" id="mobile" name="topic" />
-                <label for="mobile" className="ms-2 fs-5">Lập trình di động</label>
+                <label htmlFor="mobile" className="ms-2 fs-5">Lập trình di động</label>
             </div>
             <div className="topic-item input-group d-flex align-items-center mb-1">
                 <input type="radio" value="Database" id="database" name="topic" />
-                <label for="database" className="ms-2 fs-5">Cơ sở dữ liệu</label>
+                <label htmlFor="database" className="ms-2 fs-5">Cơ sở dữ liệu</label>
             </div>
         </React.Fragment>
     )
