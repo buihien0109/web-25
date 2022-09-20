@@ -1,10 +1,15 @@
+import { useState } from 'react';
 // import Counter from './use-state/Counter';
 // import Content from './use-effect/Content';
 // import Api from './use-effect/Api';
 // import Clock from './use-effect/Clock';
-import Content from './use-ref/Content';
+// import Content from './use-ref/Content';
+// import Post from './react-memo/Post';
+// import Content from './custom-hook/Content';
+// import Counter from './use-reducer/Counter';
+// import TodoList from './use-reducer/TodoList';
+import Blog from './use-context/Blog';
 import './App.css';
-import { useState } from 'react';
 
 
 // useState
@@ -26,7 +31,7 @@ function App() {
       {/* <button onClick={() => setIsShowClock(!isShowClock)}>Toggle</button>
       {isShowClock && <Clock />} */}
 
-      <Content />
+      <Blog />
     </div>
   );
 }
