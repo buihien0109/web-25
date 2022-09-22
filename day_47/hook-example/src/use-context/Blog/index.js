@@ -18,7 +18,7 @@ function Blog() {
     }
 
     const toggleFontSize = () => {
-        setFontSize(fontSize === 16 ? 48 : 16);
+        setFontSize(fontSize === 16 ? 32 : 16);
     }
 
     const value = {
