@@ -2,7 +2,16 @@ import React, { useContext, useState } from "react";
 import Context from "../../../../context/Context";
 
 function CourseTopic(props) {
+    const { onChangeTopic } = props
     const { topics } = useContext(Context);
+    const [checked, setChecked] = useState();
+
+    const handleChangeTopic = (e) => {
+        let topic = e.target.value;
+
+        setChecked(topic)
+        onChangeTopic(topic)
+    }
 
     return (
         <div class="col-md-3">
@@ -14,6 +23,8 @@ function CourseTopic(props) {
                             type="radio"
                             value={topic.value}
                             id={topic.value}
+                            onChange={e => handleChangeTopic(e)}
+                            checked={topic.value === checked}
                         />
                         <label htmlFor={topic.value} class="ms-2 fs-5">
                             {topic.name}

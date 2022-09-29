@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import CourseItem from '../CourseItem'
-import Context from '../../../../context/Context'
 
-function CourseList() {
-    const { courses } = useContext(Context);
-    console.log(courses);
+function CourseList(props) {
+    const { courses } = props;
 
     return (
         <div className="course-list row">
