@@ -39,7 +39,9 @@ function Course() {
         const queryParams = { ...filter, term };
         navigate({
             pathname: location.pathname,
-            search: queryString.stringify(queryParams)
+            search: queryString.stringify(queryParams, {
+                skipEmptyString: true
+            })
         })
 
     };
@@ -50,7 +52,9 @@ function Course() {
         const queryParams = { ...filter, topic };
         navigate({
             pathname: location.pathname,
-            search: queryString.stringify(queryParams)
+            search: queryString.stringify(queryParams, {
+                skipEmptyString: true
+            })
         })
     };
 
@@ -79,7 +83,7 @@ function Course() {
         <div className="course-container py-5">
             <div className="container">
                 <div className="row">
-                    <CourseTopic onChangeTopic={handleChangeTopic} />
+                    <CourseTopic onChangeTopic={handleChangeTopic} filter={filter} />
 
                     <div className="col-md-9">
                         <CourseSearch onSearchTerm={handleSearchTerm} />

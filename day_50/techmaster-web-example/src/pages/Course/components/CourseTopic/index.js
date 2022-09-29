@@ -2,14 +2,19 @@ import React, { useContext, useState } from "react";
 import Context from "../../../../context/Context";
 
 function CourseTopic(props) {
-    const { onChangeTopic } = props
+    const { filter, onChangeTopic } = props
     const { topics } = useContext(Context);
     const [checked, setChecked] = useState();
 
+    // Xử lý khi thay đổi topic
     const handleChangeTopic = (e) => {
+        // Lấy giá trị topic đã chọn
         let topic = e.target.value;
 
+        // Set lại state
         setChecked(topic)
+
+        // Gửi giá trị vừa chọn => component cha (Course)
         onChangeTopic(topic)
     }
 
@@ -24,7 +29,7 @@ function CourseTopic(props) {
                             value={topic.value}
                             id={topic.value}
                             onChange={e => handleChangeTopic(e)}
-                            checked={topic.value === checked}
+                            checked={topic.value === filter.topic}
                         />
                         <label htmlFor={topic.value} class="ms-2 fs-5">
                             {topic.name}
