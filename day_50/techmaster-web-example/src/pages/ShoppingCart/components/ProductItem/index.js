@@ -5,7 +5,7 @@ import { addCount, subtractCount, deleteProduct } from "../../../../store/action
 
 function ProductItem(props) {
     const { products, dispatch } = useContext(Context);
-    const { id, name, image, price, size, count } = props.product;
+    const { id, title, image, price, count } = props.product;
 
     // Tăng số lượng
     const handleAddCount = (id) => {
@@ -31,13 +31,13 @@ function ProductItem(props) {
     return (
         <div className="product-item d-flex border mb-4">
             <div className="image">
-                <img src={image} alt={name} />
+                <img src={image} alt={title} />
             </div>
             <div className="info d-flex flex-column justify-content-between px-4 py-3 flex-grow-1">
                 <div>
                     <div className="d-flex justify-content-between align-items-center">
                         <h2 className="text-dark fs-5 fw-normal">
-                            {name} ({size})
+                            {title}
                         </h2>
                         <h2 className="text-danger fs-5 fw-normal">
                             {formatMoney(price)}

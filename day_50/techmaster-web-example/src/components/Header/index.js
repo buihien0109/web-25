@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import Context from '../../context/Context'
 
 function Header() {
+    const { products } = useContext(Context)
+
     return (
         <div className="header">
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -40,7 +43,7 @@ function Header() {
                             <div className="cart">
                                 <Link to="/gio-hang" className="text-white position-relative">
                                     <span className="fs-5"><i className="fa-solid fa-cart-shopping"></i></span>
-                                    <span className="cart-count bg-info px-1 rounded-2 position-absolute">0</span>
+                                    <span className="cart-count bg-info px-1 rounded-2 position-absolute">{products.length}</span>
                                 </Link>
                             </div>
                             <div className="user ms-4">

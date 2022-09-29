@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useParams, Link } from 'react-router-dom';
 import Context from '../../context/Context'
+import { addProduct } from '../../store/actions';
 import { formatMoney } from '../../utils/utils';
 
 function CourseDetail() {
@@ -8,7 +9,7 @@ function CourseDetail() {
     const { courseId } = useParams();
 
     // Lấy ds khóa học, user từ trong context
-    const { courses, users } = useContext(Context);
+    const { courses, users, products, dispatch } = useContext(Context);
 
     // Lấy thông tin khóa học
     const course = courses.find(course => course.id === +courseId);
@@ -16,7 +17,27 @@ function CourseDetail() {
     // Lấy thông tin tư vấn viên
     const supporter = users.find(user => user.id === course.supporterId);
 
-    console.log({ course, supporter })
+    // Xử lý thêm sản phẩm vào giỏ hàng
+    const handleAddProduct = () => {
+        // Kiểm tra sản phẩm đã có trong giỏ hàng hay chưa
+        const isExist = products.some(product => product.id === +courseId);
+        if (isExist) {
+            alert("Sản phẩm đã có trong giỏ hàng");
+            return;
+        }
+
+        // Thêm sản phẩm vào giỏ
+        const newCartItem = {
+            id: course.id,
+            title: course.title,
+            image: course.image,
+            price: course.price,
+            count: 1
+        }
+
+        dispatch(addProduct(newCartItem));
+        alert("Thêm sản phẩm vào giỏ hàng thành công");
+    }
 
     return (
         <div className="course-container my-5">
@@ -90,7 +111,7 @@ function CourseDetail() {
                                 Hình thức học :
                                 <span className="fw-bold course-type">{course.type}</span>
                             </p>
-                            <button className="btn btn-success">
+                            <button className="btn btn-success" onClick={handleAddProduct}>
                                 Thêm vào giỏ hàng
                             </button>
                         </div>

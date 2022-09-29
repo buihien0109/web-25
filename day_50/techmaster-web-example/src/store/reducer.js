@@ -1,11 +1,11 @@
-import { ADD_COUNT, SUBTRACT_COUNT, DELETE_PRODUCT } from "./constants";
-import { cartItems } from "../data/shoppingcart-data";
+import { ADD_COUNT, SUBTRACT_COUNT, DELETE_PRODUCT, ADD_PRODUCT } from "./constants";
 
 // 1. Tạo state
-export const initState = [...cartItems];
+export const initState = [];
 
 // 2. Tạo reducer
 const reducer = (state, action) => {
+    console.log(action)
     switch (action.type) {
         case ADD_COUNT: {
             const { id } = action.payload;
@@ -30,6 +30,9 @@ const reducer = (state, action) => {
         case DELETE_PRODUCT: {
             const { id } = action.payload;
             return state.filter(product => product.id !== id);
+        }
+        case ADD_PRODUCT: {
+            return [...state, action.payload]
         }
         default: {
             return state;

@@ -1,4 +1,4 @@
-import { ADD_COUNT, DELETE_PRODUCT, SUBTRACT_COUNT } from "./constants"
+import { ADD_COUNT, ADD_PRODUCT, DELETE_PRODUCT, SUBTRACT_COUNT } from "./constants"
 
 export const addCount = (id) => {
     return {
@@ -18,5 +18,12 @@ export const deleteProduct = (id) => {
     return {
         type: DELETE_PRODUCT,
         payload: { id }
+    }
+}
+
+export const addProduct = (item) => {
+    return {
+        type: ADD_PRODUCT,
+        payload: item
     }
 }
