@@ -1,32 +1,35 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { formatMoney } from '../../../../utils/utils'
 
 function CourseItem(props) {
+    const { id, title, image, type, rating, price } = props.course
     return (
-        <div class="col-md-4">
-            <a href="./detail.html?id=1">
-                <div class="course-item shadow-sm rounded mb-4">
-                    <div class="course-item-image">
-                        <img src="https://media.techmaster.vn/api/static/8028/bpfneoc51co8tcg6lek0"
-                            alt="khoa hoc" />
+        <div className="col-md-4">
+            <Link to={`/khoa-hoc/${id}`}>
+                <div className="course-item shadow-sm rounded mb-4">
+                    <div className="course-item-image">
+                        <img src={image}
+                            alt={title} />
                     </div>
-                    <div class="course-item-info p-3">
-                        <h2 class="fs-5 mb-4 text-dark">
-                            Spring Boot - Web Back End
+                    <div className="course-item-info p-3">
+                        <h2 className="fs-5 mb-4 text-dark">
+                            {title}
                         </h2>
                         <div
-                            class="d-flex justify-content-between align-items-center fw-light text-black-50">
-                            <p class="type">Trực tuyến</p>
-                            <p class="rating">
-                                5
-                                <span class="text-warning"><i class="fa-solid fa-star"></i></span>
+                            className="d-flex justify-content-between align-items-center fw-light text-black-50">
+                            <p className="type">{type}</p>
+                            <p className="rating">
+                                {rating}
+                                <span className="text-warning"><i className="fa-solid fa-star"></i></span>
                             </p>
                         </div>
-                        <p class="price text-danger fs-5">
-                            1.000.000 VND
+                        <p className="price text-danger fs-5">
+                            {formatMoney(price)}
                         </p>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     )
 }
