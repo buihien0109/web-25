@@ -4,23 +4,54 @@ import CourseSearch from "./components/CourseSearch";
 import CourseList from "./components/CourseList";
 import Context from "../../context/Context";
 import "./Course.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import queryString from "query-string";
 
 function Course() {
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const { courses } = useContext(Context);
 
-    const [filter, setFilter] = useState({
-        term: "",
-        topic: "",
+    const [filter, setFilter] = useState(() => {
+        const params = queryString.parse(location.search);
+
+        return {
+            term: params.term || "",
+            topic: params.topic || ""
+        }
     });
+
+    // Khi query string thay đổi => Set lại filter => Lọc lại course => Render lại
+    useEffect(() => {
+        const params = queryString.parse(location.search);
+
+        setFilter({
+            term: params.term || "",
+            topic: params.topic || ""
+        })
+
+    }, [location.search])
 
     // Thay đổi tìm kiếm tiêu đề
     const handleSearchTerm = (term) => {
-        setFilter({ ...filter, term });
+        // setFilter({ ...filter, term });
+        const queryParams = { ...filter, term };
+        navigate({
+            pathname: location.pathname,
+            search: queryString.stringify(queryParams)
+        })
+
     };
 
     // Thay đổi chủ đề
     const handleChangeTopic = (topic) => {
-        setFilter({ ...filter, topic });
+        // setFilter({ ...filter, topic });
+        const queryParams = { ...filter, topic };
+        navigate({
+            pathname: location.pathname,
+            search: queryString.stringify(queryParams)
+        })
     };
 
     // Lọc khóa học theo filter
