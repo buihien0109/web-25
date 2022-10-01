@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import CourseTopic from "./components/CourseTopic";
 import CourseSearch from "./components/CourseSearch";
 import CourseList from "./components/CourseList";
-import Context from "../../context/Context";
+import Context from "context/Context";
 import "./Course.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";

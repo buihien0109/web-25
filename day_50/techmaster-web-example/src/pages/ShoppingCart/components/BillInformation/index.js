@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import Context from "../../../../context/Context";
-import { formatMoney } from "../../../../utils/utils";
+import Context from "context/Context";
+import { formatMoney } from "utils/utils";
 
 function BillInformation() {
     const { products } = useContext(Context);

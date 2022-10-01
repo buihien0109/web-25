@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import Context from "../../../../context/Context";
+import Context from "context/Context";
 
 function CourseTopic(props) {
     const { filter, onChangeTopic } = props

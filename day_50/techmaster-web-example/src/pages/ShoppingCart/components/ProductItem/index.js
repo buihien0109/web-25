@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import Context from "../../../../context/Context";
-import { formatMoney } from "../../../../utils/utils";
-import { addCount, subtractCount, deleteProduct } from "../../../../store/actions";
+import Context from "context/Context";
+import { formatMoney } from "utils/utils";
+import { addCount, subtractCount, deleteProduct } from "store/actions";
 
 function ProductItem(props) {
-    const { products, dispatch } = useContext(Context);
+    const { products, dispatchCart } = useContext(Context);
     const { id, title, image, price, count } = props.product;
 
     // Tăng số lượng
     const handleAddCount = (id) => {
-        dispatch(addCount(id));
+        dispatchCart(addCount(id));
     }
 
     // Giảm số lượng
@@ -17,14 +17,14 @@ function ProductItem(props) {
         let product = products.find(product => product.id === id);
         if (product.count <= 1) return;
 
-        dispatch(subtractCount(id));
+        dispatchCart(subtractCount(id));
     }
 
     // Xóa sản phẩm
     const handleDeleteProduct = (id) => {
         const isConfirm = window.confirm("Bạn có muốn xóa không?");
         if (isConfirm) {
-            dispatch(deleteProduct(id));
+            dispatchCart(deleteProduct(id));
         }
     }
 

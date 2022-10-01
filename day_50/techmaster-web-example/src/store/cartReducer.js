@@ -6,42 +6,50 @@ import {
 } from "./constants";
 
 // 1. Tạo state
-export const initState = [];
+export const initCart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // 2. Tạo reducer
-const reducer = (state, action) => {
+const cartReducer = (state, action) => {
+
+    let newState = [];
     switch (action.type) {
         case ADD_COUNT: {
             const { id } = action.payload;
-            const newState = state.map((product) => {
+            newState = state.map((product) => {
                 if (product.id === id) {
                     return { ...product, count: product.count + 1 };
                 }
                 return product;
             });
-            return newState;
+            break;
         }
         case SUBTRACT_COUNT: {
             const { id } = action.payload;
-            const newState = state.map((product) => {
+            newState = state.map((product) => {
                 if (product.id === id) {
                     return { ...product, count: product.count - 1 };
                 }
                 return product;
             });
-            return newState;
+            break;
         }
         case DELETE_PRODUCT: {
             const { id } = action.payload;
-            return state.filter((product) => product.id !== id);
+            newState = state.filter((product) => product.id !== id);
+            break;
         }
         case ADD_PRODUCT: {
-            return [...state, action.payload];
+            newState = [...state, action.payload];
+            break;
         }
         default: {
-            return state;
+            newState = [...state];
+            break;
         }
     }
+
+    localStorage.setItem("cart", JSON.stringify(newState));
+    return newState;
 };
 
-export default reducer;
+export default cartReducer;

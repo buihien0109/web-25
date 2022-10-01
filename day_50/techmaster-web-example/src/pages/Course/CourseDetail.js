@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
 import { useParams, Link } from 'react-router-dom';
-import Context from '../../context/Context'
-import { addProduct } from '../../store/actions';
-import { formatMoney } from '../../utils/utils';
+import Context from 'context/Context'
+import { addProduct } from 'store/actions';
+import { formatMoney } from 'utils/utils';
 
 function CourseDetail() {
     // Lấy id trên URL
     const { courseId } = useParams();
 
     // Lấy ds khóa học, user từ trong context
-    const { courses, users, products, dispatch } = useContext(Context);
+    const { courses, users, products, dispatchCart } = useContext(Context);
 
     // Lấy thông tin khóa học
     const course = courses.find(course => course.id === +courseId);
@@ -35,7 +35,7 @@ function CourseDetail() {
             count: 1
         }
 
-        dispatch(addProduct(newCartItem));
+        dispatchCart(addProduct(newCartItem));
         alert("Thêm sản phẩm vào giỏ hàng thành công");
     }
 
