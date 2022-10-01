@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Context from "context/Context";
 import { formatMoney } from "utils/utils";
+import { Link } from "react-router-dom";
 
 function BillInformation() {
     const { products } = useContext(Context);
@@ -32,6 +33,8 @@ function BillInformation() {
                                 {formatMoney(total)}
                             </span>
                         </div>
+
+                        <Link to={"/thanh-toan"} className="btn btn-primary">Tiến hành thanh toán</Link>
                     </div>
                 </div>
             )}

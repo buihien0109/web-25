@@ -1,4 +1,4 @@
-import { ADD_COUNT, ADD_PRODUCT, DELETE_PRODUCT, LOGIN, LOGOUT, SUBTRACT_COUNT } from "./constants"
+import { ADD_COUNT, ADD_PRODUCT, DELETE_PRODUCT, LOGIN, LOGOUT, SUBTRACT_COUNT, SYNC_AUTH, UPDATE_PROFILE } from "./constants"
 
 // Shopping cart
 export const addCount = (id) => {
@@ -40,5 +40,20 @@ export const login = (data) => {
 export const logout = () => {
     return {
         type: LOGOUT
+    }
+}
+
+export const syncAuth = (data) => {
+    return {
+        type: SYNC_AUTH,
+        payload: data // thông tin của user cần đồng bộ
+    }
+}
+
+// User
+export const updateProfile = (data) => {
+    return {
+        type: UPDATE_PROFILE,
+        payload: data // thông tin của user cần cập nhật
     }
 }

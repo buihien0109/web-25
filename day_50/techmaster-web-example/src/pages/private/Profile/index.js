@@ -1,6 +1,27 @@
 import React from "react";
+import Context from "context/Context";
+import { useContext } from "react";
+import { useState } from "react";
+import { syncAuth, updateProfile } from "store/actions";
 
 function Profile() {
+    const { auth, dispatchUser, dispatchAuth } = useContext(Context);
+
+    const [name, setName] = useState(auth.name);
+    const [phone, setPhone] = useState(auth.phone);
+
+    const handleUpdateProfile = () => {
+        const userUpdate = {
+            id: auth.id,
+            name,
+            phone
+        }
+
+        dispatchUser(updateProfile(userUpdate));
+        dispatchAuth(syncAuth(userUpdate));
+        alert("Cập nhật thông tin thành công")
+    }
+
     return (
         <section className="py-5">
             <div className="container">
@@ -12,8 +33,8 @@ function Profile() {
                                 <label className="form-label">Avatar</label>
                                 <div className="avatar-preview mb-3 rounded">
                                     <img
-                                        src="https://media.techmaster.vn/api/static/crop/bv9jp4k51co7nj2mhht0"
-                                        alt="avatar"
+                                        src={auth.avatar}
+                                        alt={auth.name}
                                         id="avatar-preview"
                                         className="rounded"
                                     />
@@ -25,6 +46,8 @@ function Profile() {
                                     type="text"
                                     id="name"
                                     className="form-control"
+                                    value={name}
+                                    onChange={e => setName(e.target.value)}
                                 />
                             </div>
                             <div className="mb-3">
@@ -33,6 +56,7 @@ function Profile() {
                                     type="text"
                                     id="email"
                                     className="form-control"
+                                    defaultValue={auth.email}
                                     disabled
                                 />
                             </div>
@@ -42,11 +66,13 @@ function Profile() {
                                     type="text"
                                     id="phone"
                                     className="form-control"
+                                    value={phone}
+                                    onChange={e => setPhone(e.target.value)}
                                 />
                             </div>
                         </div>
                         <div className="text-center mt-3">
-                            <button className="btn btn-primary" id="btn-save">
+                            <button className="btn btn-primary" id="btn-save" onClick={handleUpdateProfile}>
                                 Cập nhật thông tin
                             </button>
                         </div>

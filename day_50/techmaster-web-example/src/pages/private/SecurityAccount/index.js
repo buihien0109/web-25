@@ -1,6 +1,44 @@
 import React from "react";
+import { useState } from "react";
+import Context from "context/Context";
+import { useContext } from "react";
+import { syncAuth, updateProfile } from "store/actions";
 
 function SecurityAccount() {
+    const { auth, dispatchUser, dispatchAuth } = useContext(Context);
+
+    const [password, setPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    const handleUpdatePassword = () => {
+        if (password !== auth.password) {
+            alert("Mật khẩu cũ không chính xác");
+            return;
+        }
+        if (password === newPassword) {
+            alert("Mật khẩu cũ và mới không được trùng nhau");
+            return;
+        }
+        if (newPassword !== confirmPassword) {
+            alert("Mật khẩu mới và xác nhận không trùng nhau");
+            return;
+        }
+
+        let userUpdate = {
+            id: auth.id,
+            password: newPassword
+        }
+
+        dispatchUser(updateProfile(userUpdate));
+        dispatchAuth(syncAuth(userUpdate));
+        alert("Cập nhật password thành công");
+
+        setPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
+    }
+
     return (
         <section class="py-5">
             <div class="container">
@@ -15,6 +53,10 @@ function SecurityAccount() {
                                 <input
                                     type="password"
                                     class="form-control"
+                                    value={password}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
                                 />
                             </div>
                             <div class="mb-3">
@@ -24,6 +66,10 @@ function SecurityAccount() {
                                 <input
                                     type="password"
                                     class="form-control"
+                                    value={newPassword}
+                                    onChange={(e) =>
+                                        setNewPassword(e.target.value)
+                                    }
                                 />
                             </div>
                             <div class="mb-3">
@@ -33,11 +79,19 @@ function SecurityAccount() {
                                 <input
                                     type="password"
                                     class="form-control"
+                                    value={confirmPassword}
+                                    onChange={(e) =>
+                                        setConfirmPassword(e.target.value)
+                                    }
                                 />
                             </div>
                         </div>
                         <div class="text-center mt-3">
-                            <button class="btn btn-primary" id="btn-save">
+                            <button
+                                class="btn btn-primary"
+                                id="btn-save"
+                                onClick={handleUpdatePassword}
+                            >
                                 Cập nhật mật khẩu
                             </button>
                         </div>

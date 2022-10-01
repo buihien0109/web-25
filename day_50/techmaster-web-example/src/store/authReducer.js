@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from "./constants";
+import { LOGIN, LOGOUT, SYNC_AUTH } from "./constants";
 
 // 1. Tạo state
 export const initAuth = JSON.parse(localStorage.getItem("auth")) || {};
@@ -14,6 +14,10 @@ const authReducer = (state, action) => {
         }
         case LOGOUT: {
             newState = {}
+            break;
+        }
+        case SYNC_AUTH: {
+            newState = { ...state, ...action.payload }
             break;
         }
         default: {
