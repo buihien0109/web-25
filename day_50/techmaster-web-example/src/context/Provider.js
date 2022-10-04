@@ -1,10 +1,10 @@
-import React, { useReducer } from 'react'
-import Context from './Context'
-import cartReducer, { initCart } from 'store/cartReducer';
-import { courses, topics } from '../data/course-data';
+import { useReducer } from 'react';
 import authReducer, { initAuth } from 'store/authReducer';
-import userReducer, { initUsers } from 'store/userReducer';
+import cartReducer, { initCart } from 'store/cartReducer';
 import orderReducer, { initOrder } from 'store/orderReducer';
+import userReducer, { initUsers } from 'store/userReducer';
+import { courses, topics } from '../data/course-data';
+import Context from './Context';
 
 function Provider({ children }) {
     const [products, dispatchCart] = useReducer(cartReducer, initCart);
@@ -21,7 +21,7 @@ function Provider({ children }) {
         dispatchCart,
         auth,
         dispatchAuth,
-        orders, 
+        orders,
         dispatchOrder
     }
 
