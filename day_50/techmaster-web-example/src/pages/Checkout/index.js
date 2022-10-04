@@ -1,7 +1,45 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Context from "context/Context";
+import { useContext, useState } from "react";
+import { formatMoney } from "utils/utils";
+import { addOrder, clearCart } from "store/actions";
 
 function Checkout() {
+    const { auth, products, orders, dispatchOrder, dispatchCart } = useContext(Context)
+    const navaigate = useNavigate();
+
+    const [name, setName] = useState(auth.name || "")
+    const [email, setEmail] = useState(auth.email || "")
+    const [phone, setPhone] = useState(auth.phone || "")
+    const [paymentMethod, setPaymentMethod] = useState("transfer");
+
+    const subTotal = products.reduce((total, product) => total + product.count * product.price, 0);
+    const vat = subTotal * 0.1;
+    const total = subTotal + vat;
+
+    // Xử lý đơn hàng
+    const handleRegisterOrder = () => {
+        // Nếu user đã đăng nhập thì lưu lại order liên quan đến user đó
+        if (auth.id) {
+            const newOrder = {
+                id: orders.length + 1,
+                userId: auth.id,
+                items: products,
+                createdAt: new Date(),
+                paymentMethod,
+                total
+            }
+            dispatchOrder(addOrder(newOrder));
+        }
+
+        // Xóa danh sách item trong cart
+        dispatchCart(clearCart());
+
+        alert("Đăng ký đơn hàng thành công")
+        navaigate("/khoa-hoc")
+    }
+
     return (
         <div className="shopping-cart-container my-5">
             <div className="container">
@@ -34,16 +72,22 @@ function Checkout() {
                                     type="text"
                                     placeholder="Nhập tên"
                                     className="form-control flex-grow-1"
+                                    value={name}
+                                    onChange={e => setName(e.target.value)}
                                 />
                                 <input
                                     type="text"
                                     placeholder="Nhập email"
                                     className="form-control flex-grow-1 mx-2"
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
                                 />
                                 <input
                                     type="text"
                                     placeholder="Nhập số điện thoại"
                                     className="form-control flex-grow-1"
+                                    value={phone}
+                                    onChange={e => setPhone(e.target.value)}
                                 />
                             </div>
 
@@ -56,6 +100,8 @@ function Checkout() {
                                         type="radio"
                                         value="transfer"
                                         id="transfer"
+                                        checked={paymentMethod === "transfer"}
+                                        onChange={() => setPaymentMethod("transfer")}
                                     />
                                     <label htmlFor="transfer" className="ms-2">
                                         Chuyển khoản
@@ -66,6 +112,8 @@ function Checkout() {
                                         type="radio"
                                         value="direct"
                                         id="direct"
+                                        checked={paymentMethod === "direct"}
+                                        onChange={() => setPaymentMethod("direct")}
                                     />
                                     <label htmlFor="direct" className="ms-2">
                                         Thanh toán trực tiếp
@@ -82,48 +130,42 @@ function Checkout() {
                                 </h2>
 
                                 <div className="order-items">
-                                    <div className="order-item d-flex justify-content-between align-items-center">
-                                        <p className="text-black-50">
-                                            Spring Boot - Web Back End
-                                        </p>
-                                        <p className="fw-bold">
-                                            9.000.000&nbsp;VND x 1
-                                        </p>
-                                    </div>
-                                    <div className="order-item d-flex justify-content-between align-items-center">
-                                        <p className="text-black-50">
-                                            Lập trình iOS Swift căn bản cập nhật
-                                            2022
-                                        </p>
-                                        <p className="fw-bold">
-                                            3.900.000&nbsp;VND x 1
-                                        </p>
-                                    </div>
+                                    {products.map(item => (
+                                        <div key={item.id} className="order-item d-flex justify-content-between align-items-center">
+                                            <p className="text-black-50">
+                                                {item.title}
+                                            </p>
+                                            <p className="fw-bold">
+                                                {formatMoney(item.price)} x {item.count}
+                                            </p>
+                                        </div>
+                                    ))}
                                 </div>
 
                                 <div className="order-money d-flex justify-content-between align-items-center border-top pt-4">
                                     <p className="text-black-50 fw-bold">
                                         Thành tiền
                                     </p>
-                                    <p className="fw-bold">3.000.000 VND</p>
+                                    <p className="fw-bold">{formatMoney(subTotal)}</p>
                                 </div>
 
                                 <div className="order-money d-flex justify-content-between align-items-center border-top pt-4">
-                                    <p className="text-black-50 fw-bold">VAT</p>
-                                    <p className="fw-bold">3.000.000 VND</p>
+                                    <p className="text-black-50 fw-bold">VAT (10%)</p>
+                                    <p className="fw-bold">{formatMoney(vat)}</p>
                                 </div>
 
                                 <div className="order-money d-flex justify-content-between align-items-center border-top pt-4 pb-4">
                                     <p className="text-black-50 fw-bold">
                                         Tổng cộng
                                     </p>
-                                    <p className="fw-bold">3.000.000 VND</p>
+                                    <p className="fw-bold">{formatMoney(total)}</p>
                                 </div>
 
                                 <div className="d-flex justify-content-center">
                                     <button
                                         className="btn btn-primary"
                                         id="btn-submit"
+                                        onClick={handleRegisterOrder}
                                     >
                                         Gửi đăng ký
                                     </button>

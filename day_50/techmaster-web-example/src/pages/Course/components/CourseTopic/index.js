@@ -19,11 +19,11 @@ function CourseTopic(props) {
     }
 
     return (
-        <div class="col-md-3">
-            <h2 class="fs-5 mb-4">Chủ đề</h2>
-            <div class="topic-container">
+        <div className="col-md-3">
+            <h2 className="fs-5 mb-4">Chủ đề</h2>
+            <div className="topic-container">
                 {topics.map((topic, index) => (
-                    <div key={index} class="topic-item input-group d-flex align-items-center mb-1">
+                    <div key={index} className="topic-item input-group d-flex align-items-center mb-1">
                         <input
                             type="radio"
                             value={topic.value}
@@ -31,7 +31,7 @@ function CourseTopic(props) {
                             onChange={e => handleChangeTopic(e)}
                             checked={topic.value === filter.topic}
                         />
-                        <label htmlFor={topic.value} class="ms-2 fs-5">
+                        <label htmlFor={topic.value} className="ms-2 fs-5">
                             {topic.name}
                         </label>
                     </div>

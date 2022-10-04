@@ -3,6 +3,7 @@ import {
     SUBTRACT_COUNT,
     DELETE_PRODUCT,
     ADD_PRODUCT,
+    CLEAR_CART,
 } from "./constants";
 
 // 1. Tạo state
@@ -40,6 +41,10 @@ const cartReducer = (state, action) => {
         }
         case ADD_PRODUCT: {
             newState = [...state, action.payload];
+            break;
+        }
+        case CLEAR_CART: {
+            newState = [];
             break;
         }
         default: {

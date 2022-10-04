@@ -40,45 +40,45 @@ function SecurityAccount() {
     }
 
     return (
-        <section class="py-5">
-            <div class="container">
-                <h1 class="fs-4 mb-5">Bảo mật tài khoản</h1>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="bg-light p-4">
-                            <div class="mb-3">
-                                <label class="col-form-label">
+        <section className="py-5">
+            <div className="container">
+                <h1 className="fs-4 mb-5">Bảo mật tài khoản</h1>
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="bg-light p-4">
+                            <div className="mb-3">
+                                <label className="col-form-label">
                                     Mật khẩu cũ
                                 </label>
                                 <input
                                     type="password"
-                                    class="form-control"
+                                    className="form-control"
                                     value={password}
                                     onChange={(e) =>
                                         setPassword(e.target.value)
                                     }
                                 />
                             </div>
-                            <div class="mb-3">
-                                <label class="col-form-label">
+                            <div className="mb-3">
+                                <label className="col-form-label">
                                     Mật khẩu mới
                                 </label>
                                 <input
                                     type="password"
-                                    class="form-control"
+                                    className="form-control"
                                     value={newPassword}
                                     onChange={(e) =>
                                         setNewPassword(e.target.value)
                                     }
                                 />
                             </div>
-                            <div class="mb-3">
-                                <label class="col-form-label">
+                            <div className="mb-3">
+                                <label className="col-form-label">
                                     Xác nhận lại mật khẩu mới
                                 </label>
                                 <input
                                     type="password"
-                                    class="form-control"
+                                    className="form-control"
                                     value={confirmPassword}
                                     onChange={(e) =>
                                         setConfirmPassword(e.target.value)
@@ -86,9 +86,9 @@ function SecurityAccount() {
                                 />
                             </div>
                         </div>
-                        <div class="text-center mt-3">
+                        <div className="text-center mt-3">
                             <button
-                                class="btn btn-primary"
+                                className="btn btn-primary"
                                 id="btn-save"
                                 onClick={handleUpdatePassword}
                             >
