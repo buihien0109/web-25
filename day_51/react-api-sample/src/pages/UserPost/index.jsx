@@ -19,7 +19,7 @@ function UserPost() {
 
     return (
         <div className="container my-5">
-            <h1 className="text-center mb-4">List Post Of ...</h1>
+            <h1 className="text-center mb-4">List Post Of UserId {userId}</h1>
 
             <table class="table">
                 <thead>
