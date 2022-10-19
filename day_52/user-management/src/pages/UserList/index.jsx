@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 function UserList() {
     const users = useSelector((state) => state.users);
     console.log(users);
-    
+
+    const [term, setTerm] = useState("");
+
+    const handleSearch = (e) => {
+        if (e.keyCode === 13) {
+            console.log(term);
+        }
+    };
+
     return (
         <div className="container mt-5 mb-5">
             <h2 className="text-center text-uppercase">Danh sách user</h2>
@@ -17,6 +25,9 @@ function UserList() {
                             id="search"
                             className="form-control w-50"
                             placeholder="Tìm kiếm user"
+                            value={term}
+                            onChange={(e) => setTerm(e.target.value)}
+                            onKeyDown={(e) => handleSearch(e)}
                         />
                     </div>
 
