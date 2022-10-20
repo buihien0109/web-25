@@ -27,6 +27,10 @@ export const todoApi = createApi({
                 url: `/todos/${id}`,
                 method: "DELETE",
             }),
+            transformResponse: (response, meta, arg) => {
+                // console.log(response, meta, arg);
+                return arg;
+            }
         }),
     }),
 });
